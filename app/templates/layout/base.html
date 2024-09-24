@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}CSC 206 - Templates Demo{% endblock title %}</title>
+
+    <!-- Bulma from the CDN-->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
+
+    <!-- Customized Bulma (Sass) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mycss.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            {% include 'layout/navbar.html' %}
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            {% block body %}
+            <p>This is default text!</p>
+            {% endblock body %}
+
+        </div>
+
+    </section>
+
+
+    {% include 'layout/footer.html' %}
+
+
+      <script src="{{ url_for('static', filename='js/extrajs.js') }}"></script>
+
+</body>
+
+</html>

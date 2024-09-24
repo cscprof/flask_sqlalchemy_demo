@@ -1,0 +1,39 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Laptop Ratings {% endblock %}
+
+
+{% block body %}
+<h1 class="title is-3">Laptop List</h1>
+
+<div class="columns">
+    <div class="column is-full">
+        <table class="table is-striped is-bordered is-hoverable">
+            <thead>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Processor</th>
+                <th>RAM</th>
+                <th>Touch</th>
+                <th>Rating</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                {% for laptop in laptops %}
+                <tr>
+                    <td>{{ laptop.brand }}</td>
+                    <td>{{ laptop.model }}</td>
+                    <td>{{ laptop.processor.processor_brand }} {{ laptop.processor.processor_name }}</td>
+                    <td>{{ laptop.ram_memory }}</td>
+                    <td>{{ laptop.touch_screen }}</td>
+                    <td>{{ laptop.rating }}</td>
+                    <td>{{ laptop.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+{% endblock %}

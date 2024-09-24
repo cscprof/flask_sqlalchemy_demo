@@ -1,0 +1,69 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Add Laptop{% endblock %}
+
+{% block body %}
+<h1 class="is-size-3">Add Laptop</h1>
+
+<div class="columns">
+    <div class="column is-half">
+        <form action="{{ url_for('laptops.laptopAdd') }}" method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="field">
+                <label>{{ form.brand.label(class="label")}}</label>
+                <div class="control">
+                {{ form.brand(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.model.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.model(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.processor_id.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.processor_id(class="select is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.price.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.price(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.rating.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.rating(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.ram_memory.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.ram_memory(class="input is-info") }}
+                </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="label-inline">{{ form.touch_screen.label()}}
+                        {{ form.touch_screen(class="radio") }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="control">
+                {{ form.submit(class="button is-success") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
