@@ -15,7 +15,7 @@ class Processor(db.Model):
     processor_brand : Mapped[str] = mapped_column(String(32))
     
     def __repr__(self):
-        return f'<Post "{self.title}">'
+        return f'<Processor ID: {self.processor_id} is {self.processor_name} {self.processor_brand}>'
     
 
 '''

@@ -46,6 +46,10 @@ def create_app():
     from .laptops import laptops as laptops_blueprint
     app.register_blueprint(laptops_blueprint)
 
+    # Load the vehicle functions
+    from .vehicles import vehicles as vehicles_blueprint
+    app.register_blueprint(vehicles_blueprint)
+
     # Load the laptops functions
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
