@@ -1,9 +1,13 @@
-from typing import Optional
-from sqlalchemy import String, Integer, DECIMAL, Boolean, ForeignKey
+from typing import Optional, List
+from sqlalchemy import String, Integer, DECIMAL, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # Import Database connection
 from app.extensions import db
+
+from app.models.vehicle_color import VehicleColor
+
+
 
 class Vehicle(db.Model):
 
@@ -24,6 +28,11 @@ class Vehicle(db.Model):
 
   manufacturerID : Mapped[int] = mapped_column(ForeignKey("manufacturers.manufacturerID"))
   manufacturer: Mapped["Manufacturer"] = relationship()
+
+  # Many-to-many with colors
+  colors : Mapped[List["Color"]] = relationship(secondary=VehicleColor)
+                                               # , back_populates="vehicles")
+
 
   
   def __repr__(self):

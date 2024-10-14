@@ -7,13 +7,17 @@ from flask import render_template, session, redirect, url_for, flash
 # from sqlalchemy.orm import Session
 
 from . import vehicles
-from app.models.vehicle import Vehicle
-from app.models.vehicletype import VehicleType
-from app.models.manufacturer import Manufacturer
+
+# from app.models.vehicle import Vehicle
+# from app.models.color import Color
+
+from app.models.vehicle_color import Vehicle
+from app.models.vehicle_color import Color
+
 
 # Route for the laptop listing
 @vehicles.route('/vehicles')
 def vehicle_listing():
     listing = Vehicle.query.all()   
-    print(listing) 
+    # print(listing) 
     return render_template('listing2.html', vehicles = listing)
