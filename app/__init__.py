@@ -19,20 +19,26 @@ from flask import Flask
 from config import config
 
 # Import the database
-from app.extensions import db
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+
+# Import the database
+# from app.extensions import db
+from app.extensions import app
 
 def create_app():
-    app = Flask(__name__)
+    # app = Flask(__name__)
 
-    config_name = 'default'
+    # config_name = 'default'
 
-    # Get configuration data from settings.conf via the config class
-    app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
+    # # Get configuration data from settings.conf via the config class
+    # app.config.from_object(config[config_name])
+    # config[config_name].init_app(app)
 
     # Initialize Flask extensions here
-    db.init_app(app)
-
+    # db.init_app(app)
+    
     # From here onward we will add the functionality defined by the
     # individual Blueprints.  As new capabilities are added to the
     # application, new blueprints will be created and added here.

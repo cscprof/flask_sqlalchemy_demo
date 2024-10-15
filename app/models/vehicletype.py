@@ -1,20 +1,43 @@
-from app.extensions import db
-from sqlalchemy import String, Integer, DECIMAL, Boolean, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column
+from app.extensions import engine, session, Base
 
-class VehicleType(db.Model):
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base, relationship
+
+class VehicleType(Base):
 
     # Set this to the name of the table in the database if 
     # different from the class name defined above.
     __tablename__ = "vehicletypes"
 
     # Schema definition
-    vehicle_typeID : Mapped[int] = mapped_column(primary_key=True)    
-    vehicle_type_name : Mapped[str] = mapped_column(String(50))
+    vehicle_typeID = Column(Integer, primary_key=True)    
+    vehicle_type_name = Column(String(50))
     
     
     def __repr__(self):
         return f'<Vehicle Type ID: {self.vehicle_typeID} - {self.vehicle_type_name}>'
+    
+
+
+
+
+# from app.extensions import db
+# from sqlalchemy import String, Integer, DECIMAL, Boolean, ForeignKey
+# from sqlalchemy.orm import Mapped, mapped_column
+
+# class VehicleType(db.Model):
+
+#     # Set this to the name of the table in the database if 
+#     # different from the class name defined above.
+#     __tablename__ = "vehicletypes"
+
+#     # Schema definition
+#     vehicle_typeID : Mapped[int] = mapped_column(primary_key=True)    
+#     vehicle_type_name : Mapped[str] = mapped_column(String(50))
+    
+    
+#     def __repr__(self):
+#         return f'<Vehicle Type ID: {self.vehicle_typeID} - {self.vehicle_type_name}>'
     
 
 '''

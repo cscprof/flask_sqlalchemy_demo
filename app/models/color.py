@@ -1,28 +1,25 @@
-from typing import Optional, List
-from sqlalchemy import String, Integer, DECIMAL, Boolean, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from app.extensions import Base
 
-from app.extensions import db
+from sqlalchemy import create_engine, Column, ForeignKey, Integer, String
+from sqlalchemy.orm import declarative_base, relationship
 
-from app.models.vehicle_color import VehicleColor
+# from app.models.vehicle import Vehicle
 
-class Color(db.Model):
+class Color(Base):
 
     # Set this to the name of the table in the database if 
     # different from the class name defined above.
     __tablename__ = "colors"
 
     # Schema definition
-    colorID :  Mapped[int] = mapped_column(primary_key=True)
-    color_name : Mapped[str] = mapped_column(String(50))
+    colorID = Column(Integer, primary_key=True)
+    color_name = Column(String(50))
 
     # Many-to-many with vehicles
-    vehicles : Mapped[List["Vehicle"]] = relationship(secondary=VehicleColor)
-                                                    #,back_populates="colors")
-  
-
-    def __repr__(self):
-        return f'<Color ID: {self.colorID} - {self.color_name}>'
+    vehicles = relationship('Vehicle', secondary='vehiclecolors', back_populates='colors')
+                                                   
+    def __repr__(self):        
+        return f'{self.color_name}'
     
 
 '''

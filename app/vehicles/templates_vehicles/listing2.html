@@ -14,7 +14,7 @@
                 <th>Year</th>
                 <th>Model</th>
                 <th>Mileage</th>
-                <th>Description</th>                
+                <th>Color(s)</th>                
             </thead>
             <tbody>
                 {% for vehicle in vehicles %}
@@ -23,7 +23,7 @@
                     <td>{{ vehicle.model_year }}</td>
                     <td>{{ vehicle.manufacturer.manufacturer_name }} {{ vehicle.model_name }}</td>
                     <td>{{ vehicle.mileage }}</td>
-                    <td>{{ vehicle.description }}</td>                    
+                    <td>{{ vehicle.colors|join(', ') }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

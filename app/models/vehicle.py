@@ -1,38 +1,36 @@
-from typing import Optional, List
-from sqlalchemy import String, Integer, DECIMAL, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from app.extensions import Base
 
-# Import Database connection
-from app.extensions import db
+from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL
+from sqlalchemy.orm import relationship
 
-from app.models.vehicle_color import VehicleColor
+from app.models.vehicletype import VehicleType
+from app.models.manufacturer import Manufacturer
+from app.models.color import Color
 
-
-
-class Vehicle(db.Model):
+class Vehicle(Base):
 
   # Set this to the name of the table in the database if 
   # different from the class name defined above.
   __tablename__ = "vehicles"
 
   # Schema definition
-  vehicleID : Mapped[int] = mapped_column(primary_key=True)
-  vin : Mapped[str] = mapped_column(String(50))
-  mileage : Mapped[DECIMAL] = mapped_column(DECIMAL)
-  description : Mapped[str] = mapped_column(String(255))
-  model_name : Mapped[str] = mapped_column(String(255))
-  model_year : Mapped[int] = mapped_column(Integer)
+  vehicleID = Column(Integer, primary_key=True)
+  vin = Column(String(50))
+  mileage = Column(DECIMAL)
+  description = Column(String(255))
+  model_name = Column(String(255))
+  model_year = Column(Integer)
 
-  vehicle_typeID : Mapped[int] = mapped_column(ForeignKey("vehicletypes.vehicle_typeID"))
-  vehicle_type: Mapped["VehicleType"] = relationship()      
+  # Vehicle Type
+  vehicle_typeID = Column(Integer, ForeignKey('vehicletypes.vehicle_typeID'))
+  vehicle_type = relationship('VehicleType')      
 
-  manufacturerID : Mapped[int] = mapped_column(ForeignKey("manufacturers.manufacturerID"))
-  manufacturer: Mapped["Manufacturer"] = relationship()
+  # Manufacturer
+  manufacturerID = Column(Integer, ForeignKey('manufacturers.manufacturerID'))
+  manufacturer = relationship('Manufacturer')
 
   # Many-to-many with colors
-  colors : Mapped[List["Color"]] = relationship(secondary=VehicleColor)
-                                               # , back_populates="vehicles")
-
+  colors = relationship('Color', secondary='vehiclecolors', back_populates='vehicles')
 
   
   def __repr__(self):

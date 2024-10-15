@@ -8,16 +8,35 @@ from flask import render_template, session, redirect, url_for, flash
 
 from . import vehicles
 
-# from app.models.vehicle import Vehicle
-# from app.models.color import Color
+from app.models.vehicle import Vehicle
 
-from app.models.vehicle_color import Vehicle
-from app.models.vehicle_color import Color
+from app.models.vehicletype import VehicleType
+from app.extensions import Base, engine, session
+# from app.models.vehicle_color import Color
 
 
-# Route for the laptop listing
+# Route for the vehicles listing
 @vehicles.route('/vehicles')
 def vehicle_listing():
-    listing = Vehicle.query.all()   
-    # print(listing) 
-    return render_template('listing2.html', vehicles = listing)
+
+    Base.metadata.create_all(engine)
+
+    results = session.query(Vehicle).all()
+
+    # for vehicle in results:
+    #     c = [color.color_name for color in vehicle.colors]
+
+    return render_template('listing2.html', vehicles = results)
+    
+
+# Route for the vehicle types listing
+@vehicles.route('/vtypes')
+def vehicle_types():
+
+    Base.metadata.create_all(engine)
+
+    results = session.query(VehicleType).all()
+    for vtype in results:
+        print(f"ID: {vtype.vehicle_typeID} Vehicle Type: {vtype.vehicle_type_name}")
+    
+    return "Got it" # render_template('listing2.html', vehicles = listing)

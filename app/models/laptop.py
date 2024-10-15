@@ -1,33 +1,33 @@
-from typing import Optional
-from sqlalchemy import String, Integer, DECIMAL, Boolean, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from app.extensions import Base
 
-# Import Database connection
-from app.extensions import db
+from sqlalchemy import Column, ForeignKey, Integer, String, Boolean, DECIMAL
+from sqlalchemy.orm import relationship
 
-class Laptop(db.Model):
+from app.models.processor import Processor
+
+class Laptop(Base):
 
   # Set this to the name of the table in the database if 
   # different from the class name defined above.
   __tablename__ = "laptops"
 
   # Schema definition
-  id : Mapped[int] = mapped_column(primary_key=True)
-  brand : Mapped[str] = mapped_column(String(50))
-  model : Mapped[str] = mapped_column(String(255))
-  price : Mapped[DECIMAL] = mapped_column(DECIMAL)
-  rating : Mapped[int] = mapped_column(Integer)
-  ram_memory : Mapped[int] = mapped_column(Integer)
-  touch_screen : Mapped[bool] = mapped_column(Boolean)
+  id = Column(primary_key=True)
+  brand = Column(String(50))
+  model = Column(String(255))
+  price = Column(DECIMAL)
+  rating = Column(Integer)
+  ram_memory = Column(Integer)
+  touch_screen =Column(Boolean)
 
   # NOTE: processor will be the variable that refers to processor table columns
-  processor_id : Mapped[int] = mapped_column(ForeignKey("processors.processor_id"))
-  processor: Mapped["Processor"] = relationship()  
+  processor_id = Column(Integer, ForeignKey('processors.processor_id'))
+  processor = relationship("Processor")  
       
   
   def __repr__(self):
       return f'<Brand "{self.brand} Model: {self.model}">'
-    
+
 
 '''
 
