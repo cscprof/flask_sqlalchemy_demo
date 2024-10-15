@@ -2,7 +2,7 @@
 This file creates the Flask application when you launch the
 application with the
 
-    python flasky.py
+    python wsgi.py
 
 command from the command prompt.
 
@@ -14,30 +14,11 @@ Helpful tutorial:
     https://www.digitalocean.com/community/tutorials/how-to-structure-a-large-flask-application-with-flask-blueprints-and-flask-sqlalchemy
 
 '''
-import os
-from flask import Flask
-from config import config
-
-# Import the database
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-
-# Import the database
-# from app.extensions import db
+# Create an instance of the app, read in the configration
+# Create the database connection and session
 from app.extensions import app
 
 def create_app():
-    # app = Flask(__name__)
-
-    # config_name = 'default'
-
-    # # Get configuration data from settings.conf via the config class
-    # app.config.from_object(config[config_name])
-    # config[config_name].init_app(app)
-
-    # Initialize Flask extensions here
-    # db.init_app(app)
     
     # From here onward we will add the functionality defined by the
     # individual Blueprints.  As new capabilities are added to the

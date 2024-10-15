@@ -15,8 +15,7 @@ def vehicle_listing():
 
     Base.metadata.create_all(engine)
 
-    results = session.query(Vehicle).all()
-
+    results = session.query(Vehicle)
     # for vehicle in results:
     #     c = [color.color_name for color in vehicle.colors]
 
@@ -29,8 +28,7 @@ def vehicle_types():
 
     Base.metadata.create_all(engine)
 
-    results = session.query(VehicleType).all()
-    for vtype in results:
-        print(f"ID: {vtype.vehicle_typeID} Vehicle Type: {vtype.vehicle_type_name}")
+    results = session.query(VehicleType).order_by(VehicleType.vehicle_typeID)
+    #     print(f"ID: {vtype.vehicle_typeID} Vehicle Type: {vtype.vehicle_type_name}")
     
-    return "Got it"
+    return render_template('vehicles/vehicle_types.html', vehicle_types = results)

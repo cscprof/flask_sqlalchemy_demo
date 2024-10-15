@@ -1,8 +1,7 @@
 # Imports to handle form processing
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, DecimalField, SelectField, RadioField, HiddenField
-from wtforms.validators import DataRequired, Length, NumberRange, Optional
-
+from wtforms.validators import DataRequired, Length, NumberRange
 
 '''
     NOTE: This is where all WT Forms classes will be defined for this module

@@ -45,9 +45,6 @@ class LastName(Base):
     firsts = relationship('FirstName', secondary='zfirstlast', back_populates='lasts')
 
 
-
-
-
 @app.route('/')
 def test_page():
    

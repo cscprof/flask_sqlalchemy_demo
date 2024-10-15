@@ -1,9 +1,7 @@
 from app.extensions import Base
 
-from sqlalchemy import create_engine, Column, ForeignKey, Integer, String
-from sqlalchemy.orm import declarative_base, relationship
-
-# from app.models.vehicle import Vehicle
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 
 class Color(Base):
 

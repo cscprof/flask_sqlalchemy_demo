@@ -17,6 +17,7 @@ config.read('settings.conf')
 
 
 class Config:
+    # Settings for all valid application configurations
     SECRET_KEY = config["DEFAULT"]["SECRET_KEY"]
     SESSION_PERMANENT = config["SESSION"]["SESSION_PERMANENT"]
     SESSION_TYPE = config["SESSION"]["SESSION_TYPE"]

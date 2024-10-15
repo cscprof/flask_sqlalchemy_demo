@@ -1,7 +1,7 @@
 from app.extensions import Base
 
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Column, Integer, String
+
 
 class Manufacturer(Base):
 
@@ -15,7 +15,7 @@ class Manufacturer(Base):
     
     
     def __repr__(self):
-        return f'<Manufacturer ID: {self.manufacturerID} - {self.manufacturer_name}>'
+        return f'{self.manufacturer_name}>'
     
 
 '''
