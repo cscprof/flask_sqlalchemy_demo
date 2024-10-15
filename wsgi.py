@@ -5,6 +5,11 @@ launch the built-in web server.  this web server is for development purposes
 only (and for doing the demo of our code to the TAs.)
 
 There should be no need to make any changes to this file.
+
+Tutorial for setting up nginx / uWSGI / Flask app
+
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-22-04
+
 '''
 
 from app import create_app

@@ -23,7 +23,7 @@ def laptop_listing():
     # for laptop in results:
     #     print(f"ID: {laptop.processor.processor_id} Model: {laptop.processor.processor_name}")
 
-    return render_template('listing.html', laptops = results)
+    return render_template('laptops/listing.html', laptops = results)
 
 
 # Route for adding a laptop to the database
@@ -47,6 +47,6 @@ def laptopAdd():
         url = '/laptops'
         return redirect(url, 302)
 
-    return render_template('addlaptop.html', form=form)
+    return render_template('laptops/addlaptop.html', form=form)
 
 
