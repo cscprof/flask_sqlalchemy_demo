@@ -17,6 +17,7 @@ class Vehicle(Base):
   description = Column(String(255))
   model_name = Column(String(255))
   model_year = Column(Integer)
+  fuel_type = Column(String(50))
 
   # Vehicle Type
   vehicle_typeID = Column(Integer, ForeignKey('vehicletypes.vehicle_typeID'))
