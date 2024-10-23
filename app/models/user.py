@@ -25,27 +25,28 @@ class User(UserMixin, Base):
   __tablename__ = "usersdemo"
 
   # Schema definition
-  id = Column(primary_key=True)
+  id = Column(Integer, primary_key=True)
   firstname = Column(String(64))
   nickname  = Column(String(64))
   lastname = Column(String(64))
   email = Column(String(128), unique=True, nullable=False)
   password = Column(String, nullable=False)
   created_on = Column(DateTime)
+  is_Admin = Column(Boolean)
         
-  def __init__(self, firstname, lastname, email, password):
+  def __init__(self, firstname, lastname, nickname, email, is_Admin):
     self.firstname = firstname
     self.lastname = lastname
-    self.email = email
-    self.password = self.set_password(password)
+    self.nickname = nickname
+    self.email = email    
     self.created_on = datetime.now()
+    self.is_Admin = is_Admin
 
   def set_password(self, password):
         self.password = generate_password_hash(password)
 
   def check_password(self, password):
       return check_password_hash(self.password, password)
-
 
   def __repr__(self):
       return f'{self.email}'

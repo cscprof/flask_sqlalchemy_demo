@@ -1,0 +1,62 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+<h1 class="is-size-3">New User Registration</h1>
+
+<div class="columns">
+    <div class="column is-half">
+        <form action="{{ url_for('users.register') }}" method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="field">
+                <label>{{ form.firstname.label(class="label")}}</label>
+                <div class="control">
+                {{ form.firstname(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.nickname.label(class="label")}}</label>
+                <div class="control">
+                {{ form.nickname(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.lastname.label(class="label")}}</label>
+                <div class="control">
+                {{ form.lastname(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.email.label(class="label")}}</label>
+                <div class="control">
+                {{ form.email(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.password.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.password(class="input is-info") }}
+                </div>
+            </div>
+            <div class="field">
+                <label>{{ form.password2.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.password2(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="control">
+                {{ form.submit(class="button is-success") }}
+            </div>
+        </form>
+        <p>Already Registered? <a href="{{ url_for('users.login') }}">Login</a></p>
+    </div>
+</div>
+
+{% endblock %}
