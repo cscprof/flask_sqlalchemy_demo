@@ -6,8 +6,15 @@ from config import config
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+# Import Flask Login 
+from flask_login import LoginManager
+
+
 # Create the app instance
 app = Flask(__name__)
+
+# Configure login functions
+login = LoginManager(app)
 
 # Define the app configuration
 config_name = 'base'

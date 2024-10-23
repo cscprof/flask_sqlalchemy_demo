@@ -17,7 +17,6 @@ from sqlalchemy import or_
 def vehicle_listing():
 
     Base.metadata.create_all(engine)
-
     results = session.query(Vehicle)
     # for vehicle in results:
     #     c = [color.color_name for color in vehicle.colors]
@@ -30,7 +29,7 @@ def vehicle_listing():
 def vehicle_types():
 
     Base.metadata.create_all(engine)
-    results = ( session.query(VehicleType).order_by(VehicleType.vehicle_typeID)
+    results = ( session.query(VehicleType).order_by(VehicleType.vehicle_type_name.desc())
     )
     
     return render_template('vehicles/vehicle_types.html', vehicle_types = results)
@@ -62,6 +61,5 @@ def vehicle_mfg():
                     .join(Manufacturer)
                     .filter( Manufacturer.manufacturer_name.in_(mfg_list) ) 
     )
-            
 
     return render_template('vehicles/listing.html', vehicles = results)

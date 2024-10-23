@@ -1,0 +1,34 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<h1 class="is-size-3">Login</h1>
+
+<div class="columns">
+    <div class="column is-half">
+        <form action="{{ url_for('users.login') }}" method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="field">
+                <label>{{ form.email.label(class="label")}}</label>
+                <div class="control">
+                {{ form.email(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label>{{ form.password.label(class="label")}}</label>
+                <div class="control">
+                    {{ form.password(class="input is-info") }}
+                </div>
+            </div>
+
+            <div class="control">
+                {{ form.submit(class="button is-success") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -25,12 +25,30 @@
 
 </head>
 
+
 <body>
     <section class="section">
         <div class="container">
             {% include 'layout/navbar.html' %}
         </div>
     </section>
+
+    <section class="section">
+        <div class="container">
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="list-group">
+                {% for message in messages %}
+                    <li class="list-group-item list-group-item-success">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+        </div>
+    </section>
+
     <section class="section">
         <div class="container">
             {% block body %}

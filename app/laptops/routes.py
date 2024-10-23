@@ -8,6 +8,8 @@ from . import laptops
 from app.models.laptop import Laptop
 from app.extensions import Base, engine, session
 
+from flask_login import login_required
+
 
 from . import AddLaptop
 from .forms import AddLaptopForm
@@ -28,6 +30,7 @@ def laptop_listing():
 
 # Route for adding a laptop to the database
 @laptops.route('/laptops/add', methods=['GET', 'POST'])
+@login_required
 def laptopAdd():
 
     al = AddLaptop.AddLaptop()
