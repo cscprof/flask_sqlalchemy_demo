@@ -28,7 +28,7 @@ def user_listing():
 def login():
 
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
 
     # Create the Add Laptop Form
     form = LoginForm()
@@ -61,6 +61,7 @@ def logout():
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
+    
     form = RegistrationForm()
     if form.validate_on_submit():
         flash('We validated!')
@@ -77,7 +78,7 @@ def register():
         session.flush()
         session.commit()
         
-        # flash('Congratulations, you are now a registered user!')
+        flash('Congratulations, you are now a registered user!')
         return redirect(url_for('users.login'))
     
     return render_template('auth/register.html', form=form)

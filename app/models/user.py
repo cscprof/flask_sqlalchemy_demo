@@ -1,11 +1,10 @@
 from app.extensions import Base, login, session
 
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_bcrypt import bcrypt
 from datetime import datetime
 
 from flask_login import UserMixin
-from sqlalchemy import Column, ForeignKey, Integer, String, Boolean, DateTime, DECIMAL
+from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from sqlalchemy.orm import relationship
 
 @login.user_loader
